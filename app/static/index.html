@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>古籍补纸配片台</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>古籍补纸配片台</h1>
+    <p>从有限边料中为相邻破损选择裁片，使水印线相位在破损之间保持连续。</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>破损 <small>按阅读方向排列，3–5 处</small></h2>
+        <button id="addDamage" type="button">＋ 添加破损</button>
+      </div>
+      <div class="table-wrap">
+        <table id="damageTable" class="grid">
+          <thead>
+            <tr>
+              <th>#</th><th>名称</th><th>宽</th><th>高</th>
+              <th>相位下限</th><th>相位上限</th><th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>边料 <small>4–8 张</small></h2>
+        <button id="addScrap" type="button">＋ 添加边料</button>
+      </div>
+      <div class="table-wrap">
+        <table id="scrapTable" class="grid">
+          <thead>
+            <tr>
+              <th>名称</th><th>区域 X</th><th>区域 Y</th><th>区域宽</th><th>区域高</th>
+              <th>纹样周期</th><th>相位原点</th><th>可用次数</th><th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="loadExample" type="button">载入示例</button>
+      <button id="saveDraft" type="button">保存草稿</button>
+      <button id="clearDraft" type="button">清除草稿</button>
+      <button id="solveBtn" type="button" class="primary">发起配片</button>
+    </section>
+
+    <section id="result" class="panel hidden" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <span>配片规则：相邻裁片右缘 / 左缘水印相位按各自周期折算后相等；同一边料上的裁片不得重叠；每张边料受可用次数限制。</span>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
